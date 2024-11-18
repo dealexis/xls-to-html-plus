@@ -1,8 +1,9 @@
 ### Requirements
 
-1. php8.2^
+1. php8.2^ (terminal `sudo apt install php`)
 2. docker
-3. node22^ (better using nvm)
+3. [node22^](https://nodejs.org/en/download/package-manager) (better using nvm)
+4. composer (terminal `sudo apt install composer`)
 
 ### Run in terminal under WSL
 
