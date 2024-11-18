@@ -10,13 +10,21 @@ Run following sequentially
 
 #### backend
 
+> recommended to make alias for `sail`
+> 
+> in ~/.bashrc (use `sudo nano ~./bashrc`) add in the end following:
+> 
+> `alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'`
+
 Generate new .env `cp .env.example .env`
 
 `composer install`
 
+`sail up -d` this will run project locally
+
 `sail artisan migrate`
 
-`sail up -d` this will run project locally
+`sail artisan key:generate`
 
 #### frontend
 1. `npm -i -g yarn`
