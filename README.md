@@ -5,9 +5,18 @@
 3. node22^ (better using nvm)
 
 ### Run in terminal under WSL
+
+Run following sequentially
+
 #### backend
-1. `sail artisan migrate`
-2. `sail up -d` this will run project locally
+
+Generate new .env `cp .env.example .env`
+
+`composer install`
+
+`sail artisan migrate`
+
+`sail up -d` this will run project locally
 
 #### frontend
 1. `npm -i -g yarn`
