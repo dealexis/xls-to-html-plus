@@ -34,6 +34,8 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required',
             'c_password' => 'required|same:password',
+        ], [
+            'c_password' => 'Password did not match'
         ]);
 
         if ($validator->fails()) {
