@@ -31,7 +31,7 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'password' => 'required',
             'c_password' => 'required|same:password',
         ], [
@@ -53,7 +53,7 @@ class AuthController extends Controller
 
     public function logout(): JsonResponse
     {
-        Auth::user()->tokens()->delete();
+        Auth::user()?->tokens()?->delete();
         return Response::success('Logged out');
     }
 }
