@@ -1,31 +1,47 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Helpers\Response;
-use App\Http\Services\XlsConversionService;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
-class XlsConversionController extends Controller
+use App\Http\Helpers\Response;
+use App\Http\Services\User\XlsConversionService;
+use App\Resources\ConversionResource;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Auth;
+use function App\is_arr_uc;
+
+class UserXlsConversionController extends Controller
 {
     public function __construct(private readonly XlsConversionService $xlsConversionService)
     {
     }
 
-    public function convertXls(Request $request): JsonResponse
+    public function index(): JsonResource
+    {
+        return ConversionResource::collection(Auth::user()->conversions()->orderBy('created_at', 'desc')->get());
+    }
+
+    public function convertXls(Request $request): \Illuminate\Http\JsonResponse
     {
         $request->validate([
             'xls_file' => 'required|file|mimes:xls,xlsx|max:20480',
             'output' => 'required|string',
+            'columns' => 'array',
         ]);
 
         try {
             $output = $request->get('output');
+            $columns = $request->get('columns') ?? [];
             $file = $request->file('xls_file');
 
+            if (!is_arr_uc($columns)) {
+                throw new \Exception('Columns must be an array of uppercase letters');
+            }
+
             $this->xlsConversionService->loadFile($file);
+            $this->xlsConversionService->createConversion($output, $columns);
 
             $result = match ($output) {
                 'json' => $this->xlsConversionService->convertToJson(),
