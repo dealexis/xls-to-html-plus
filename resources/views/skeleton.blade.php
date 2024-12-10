@@ -12,5 +12,11 @@
 @yield('content')
 @yield('footer')
 @yield('scripts')
+<script>
+    var APP_URL = '{{env('APP_URL')}}';
+    var routes = @json([
+    'upload' => route('convert-xls')
+])
+</script>
 </body>
 </html>

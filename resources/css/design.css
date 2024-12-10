@@ -5,6 +5,12 @@ body {
     background-color: #f0f0f0;
 }
 
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .nav {
     display: flex;
     justify-content: space-between;
@@ -59,9 +65,12 @@ body {
     margin-bottom: 90px;
 }
 
+#uploadArea {
+    max-width: 800px;
+    width: 100%;
+}
+
 .background {
-    width: 800px;
-    height: 500px;
     border-radius: 10px;
     background-color: #ffffff;
     display: flex;
@@ -71,7 +80,7 @@ body {
     color: #48947e;
     font-size: 16px;
     transition: height 0.3s ease;
-    margin: 0 auto 100px;
+    margin: 0 auto 50px;
 }
 
 .conversion-options,
@@ -109,9 +118,17 @@ body {
     color: #00986D;
 }
 
+#uploadSection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
 /* Style for drop zone */
 .drop-zone {
-    width: 770px;
+    width: 100%;
     height: 200px;
     border: 2px dashed #00986D;
     border-radius: 10px;
@@ -190,14 +207,12 @@ input[type="file"] {
     height: 50px;
     font-size: 20px;
     padding: 10px;
-    margin: 12px;
-    margin-left: 12px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     background-color: #00986D;
     color: #ffffff;
-    margin-top: 20px;
+    margin: 20px 12px 12px;
 }
 
 /* Toggle header and content styling */
@@ -276,7 +291,7 @@ input[type="file"] {
     display: flex;
     justify-content: space-around;
     width: 100%;
-    max-width: 1419px;
+    max-width: 1299px;
     padding: 50px;
     background-color: #fff;
     border-radius: 8px;
@@ -318,4 +333,17 @@ input[type="file"] {
     height: 380px;
     width: 100%;
     margin-top: 150px;
+}
+
+#result {
+    border-radius: 10px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    color: #48947e;
+    font-size: 16px;
+    transition: height 0.3s ease;
+    margin: 0 auto 100px;
 }

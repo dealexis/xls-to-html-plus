@@ -18,6 +18,4 @@
     @include('footer')
 @endsection
 
-@section('scripts')
-    @vite(['resources/js/app.js', 'resources/css/footer.css'])
-@endsection
+@vite('resources/js/app.js')

@@ -18,3 +18,4 @@
         <p>Copyright © Convertiverse 2024, All Rights Reserved</p>
     </div>
 </div>
+@vite('resources/css/footer.css')
