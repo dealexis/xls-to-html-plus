@@ -3,15 +3,29 @@
 namespace App\Http\Services\User;
 
 use App\Models\Conversion;
+use Exception;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use PhpOffice\PhpSpreadsheet\IOFactory;
-use PhpOffice\PhpSpreadsheet\Writer\Html;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 
-class XlsConversionService extends \App\Http\Services\XlsConversionService
+class XlsConversionService
 {
     protected Conversion $conversion;
+    protected UploadedFile $file;
+
+    /**
+     * @throws Exception
+     */
+    public function loadFile($file): void
+    {
+        if (null === $file) {
+            throw new Exception('File not loaded');
+        }
+
+        $this->file = $file;
+    }
 
     /**
      * @throws FileIsTooBig

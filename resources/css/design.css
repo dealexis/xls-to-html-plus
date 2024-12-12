@@ -240,7 +240,6 @@ input[type="file"] {
 
 /* Toggle content */
 #optionsContent {
-    display: none;
     padding: 15px;
     font-size: 14px;
     color: #333;
@@ -300,7 +299,7 @@ input[type="file"] {
 
 .step {
     text-align: center;
-    max-width: 200px;
+    max-width: 250px;
     float: left;
 }
 
@@ -346,4 +345,12 @@ input[type="file"] {
     font-size: 16px;
     transition: height 0.3s ease;
     margin: 0 auto 100px;
+}
+
+.columns-list {
+
+}
+
+.columns-list li{
+    display: inline;
 }

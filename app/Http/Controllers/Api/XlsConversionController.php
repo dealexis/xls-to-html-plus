@@ -7,6 +7,7 @@ use App\Http\Helpers\Response;
 use App\Http\Services\XlsConversionService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use function App\is_arr_uc;
 
 class XlsConversionController extends Controller
 {
@@ -19,17 +20,23 @@ class XlsConversionController extends Controller
         $request->validate([
             'xls_file' => 'required|file|mimes:xls,xlsx|max:20480',
             'output' => 'required|string',
+            'columns' => 'array',
         ]);
 
         try {
             $output = $request->get('output');
             $file = $request->file('xls_file');
-
+            $columns = $request->get('columns');
             $this->xlsConversionService->loadFile($file);
 
+            $data = [];
+            if ($columns && is_arr_uc($columns)) {
+                $data['columns'] = $columns;
+            }
+
             $result = match ($output) {
-                'json' => $this->xlsConversionService->convertToJson(),
-                default => $this->xlsConversionService->convertToHtml(),
+                'json' => $this->xlsConversionService->convertToJson($data),
+                default => $this->xlsConversionService->convertToHtml($data),
             };
 
             return Response::success('', $result);

@@ -24,35 +24,47 @@
 
                 <div id="uploadSection">
                     <div class="drop-zone" id="dropZone">
-                        <img src="{{Vite::asset('resources/img/upload.png')}}" alt="Upload Icon"
+                        <img src="{{Vite::asset('resources/images/upload.png')}}" alt="Upload Icon"
                              class="upload-icon">
                         <p>Drag and drop your file here, or click to select a file</p>
                         <input type="file" id="fileInput" accept=".xls,.xlsx">
                     </div>
                 </div>
-
                 <div class="toggle-header" id="optionsContent">
                     Options
-                    {{--<div>
-                        <div class="input-group">
-                            <label for="excelFormat">Excel Format</label>
-                            <select id="excelFormat">
-                                <option value="xlsx">XLSX</option>
-                                <option value="xls">XLS</option>
-                                <option value="csv">CSV</option>
-                            </select>
-                            <label for="sheetName">Sheet Name</label>
-                            <input type="text" id="sheetName" placeholder="Enter sheet name">
-                        </div>
-                        <div class="input-group">
-                            <label for="rowRange">Row Range</label>
-                            <input type="text" id="rowRange" placeholder="e.g., 1-10" style="width: 100px;">
-                            <span> (e.g., 1-10 for rows 1 to 10)</span>
-                            <label for="colRange">Column Range</label>
-                            <input type="text" id="colRange" placeholder="e.g., A-C" style="width: 100px;">
-                            <span> (e.g., A-C for columns A to C)</span>
-                        </div>
-                    </div>--}}
+                </div>
+                <div class="options-content">
+                    <div class="input-group columns-list">
+                        Choose specific columns that will appear in the result
+                        <ul>
+                            <li><label><input type="checkbox" name="columns[]" value="A"> A</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="B"> B</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="C"> C</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="D"> D</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="E"> E</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="F"> F</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="G"> G</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="H"> H</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="I"> I</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="J"> J</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="K"> K</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="L"> L</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="M"> M</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="N"> N</label></li>
+                            {{--                                <li><label><input type="checkbox" name="columns[]" value="O"> O</label></li>--}}
+                            {{--                                <li><label><input type="checkbox" name="columns[]" value="P"> P</label></li>--}}
+                            {{--                                <li><label><input type="checkbox" name="columns[]" value="Q"> Q</label></li>--}}
+                            {{--                                <li><label><input type="checkbox" name="columns[]" value="R"> R</label></li>--}}
+                            {{--                                <li><label><input type="checkbox" name="columns[]" value="S"> S</label></li>--}}
+                            {{--                                <li><label><input type="checkbox" name="columns[]" value="T"> T</label></li>--}}
+                            {{--                                <li><label><input type="checkbox" name="columns[]" value="U"> U</label></li>--}}
+                            {{--                                <li><label><input type="checkbox" name="columns[]" value="V"> V</label></li>--}}
+                            {{--                                <li><label><input type="checkbox" name="columns[]" value="W"> W</label></li>--}}
+                            {{--                                <li><label><input type="checkbox" name="columns[]" value="X"> X</label></li>--}}
+                            {{--                                <li><label><input type="checkbox" name="columns[]" value="Y"> Y</label></li>--}}
+                            {{--                                <li><label><input type="checkbox" name="columns[]" value="Z"> Z</label></li>--}}
+                        </ul>
+                    </div>
                 </div>
 
                 <div id="file-list" style="display: none;">
@@ -75,20 +87,18 @@
                 <div class="step">
                     <div class="step-number">1</div>
                     <div class="step-title">Pick Your Excel File</div>
-                    <div class="step-description">You can upload files from your computer or import from a URL.</div>
+                    <div class="step-description">Upload files from your device</div>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <div class="step-title">Preview and Configure</div>
-                    <div class="step-description">Preview your file and configure the conversion options if needed.
-                    </div>
+                    <div class="step-title">Configure if needed</div>
+                    <div class="step-description">Preview your file and configure the conversion options if needed</div>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
                     <div class="step-title">Convert and Download</div>
-                    <div class="step-description">Click "Convert" to transform your file into an HTML Table and download
-                        it
-                        instantly.
+                    <div class="step-description">Click "Convert" to transform your file into an HTML Table or JSON and
+                        download it instantly
                     </div>
                 </div>
             </div>
