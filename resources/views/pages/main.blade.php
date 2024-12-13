@@ -33,9 +33,11 @@
                 <div class="toggle-header" id="optionsContent">
                     Options
                 </div>
-                <div class="options-content">
+                <div class="options-content" style="display: none;">
                     <div class="input-group columns-list">
-                        Choose specific columns that will appear in the result
+                        <label>
+                            Choose specific columns that will appear in the result
+                        </label>
                         <ul>
                             <li><label><input type="checkbox" name="columns[]" value="A"> A</label></li>
                             <li><label><input type="checkbox" name="columns[]" value="B"> B</label></li>
@@ -64,6 +66,12 @@
                             {{--                                <li><label><input type="checkbox" name="columns[]" value="Y"> Y</label></li>--}}
                             {{--                                <li><label><input type="checkbox" name="columns[]" value="Z"> Z</label></li>--}}
                         </ul>
+                    </div>
+                    <div class="input-group">
+                        <label>
+                            <input type="checkbox" value="yes">
+                            Make key:value pairs using first row as a header (json only) (NOT WORKING YET)
+                        </label>
                     </div>
                 </div>
 

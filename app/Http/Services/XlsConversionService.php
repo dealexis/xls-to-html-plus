@@ -16,7 +16,7 @@ class XlsConversionService
         $sheet = $spreadsheet->getActiveSheet();
         $sheet_data = $sheet->toArray(null, true, true, true);
 
-        $columns = !isset($data['columns']) ?: $data['columns'];
+        $columns = isset($data['columns']) ? $data['columns'] : false;
 
         if ($columns) {
             $sheet_data = array_map(function ($row) use ($columns) {
@@ -42,7 +42,7 @@ class XlsConversionService
         $spreadsheet = IOFactory::load($this->file->getPathname());
         $sheet = $spreadsheet->getActiveSheet();
 
-        $columns = isset($data['columns']) ?$data['columns'] : false;
+        $columns = isset($data['columns']) ? $data['columns'] : false;
 
         $sheet_data = $sheet->toArray(null, true, true, true);
 

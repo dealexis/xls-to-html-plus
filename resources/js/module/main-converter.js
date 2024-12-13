@@ -20,8 +20,8 @@ window.onClickOutput = onClickOutput
 
 const dropArea = document.getElementById('dropZone');
 const fileInput = document.getElementById('fileInput');
-//const fileList = document.getElementById('fileNames');
 const $options = $('#optionsContent');
+const $options_content = $('.options-content')
 const $file_list = $('#file-list')
 const $uploaded_file_name = $('#uploaded-file-name')
 const $convert_button = $('#convert-button')
@@ -56,9 +56,7 @@ fileInput.addEventListener('change', (event) => {
 function handleFile(file) {
     $uploaded_file_name.text(file.name);
     convert_form_data['file'] = file
-    //console.log(convert_form_data)
     $file_list.slideDown()
-    $options.slideDown()
     $convert_button.css('display', 'block')
 }
 
@@ -71,6 +69,9 @@ $convertBtn.click(() => {
 
     fm.append('output', convert_form_data.output)
     fm.append('xls_file', convert_form_data.file)
+    $options_content.find('input[name="columns[]"]:checked').each((i, el) => {
+        fm.append('columns[]', el.value)
+    })
 
     axios.post(routes.upload, fm, {
         headers: {
@@ -93,12 +94,6 @@ $convertBtn.click(() => {
     convert_is_loading = true;
 })
 
-// function handleFiles(files) {
-//     fileList.innerHTML = '';
-//
-//     Array.from(files).forEach(file => {
-//         const li = document.createElement('li');
-//         li.textContent = file.name;
-//         fileList.appendChild(li);
-//     });
-// }
+$options.click(() => {
+    $options_content.slideToggle()
+})
