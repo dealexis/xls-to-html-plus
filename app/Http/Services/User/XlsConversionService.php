@@ -31,7 +31,7 @@ class XlsConversionService
      * @throws FileIsTooBig
      * @throws FileDoesNotExist
      */
-    public function createConversion($type, $columns): void
+    public function createConversion($type, $columns, $f_header_row, $f_header_row_wr): void
     {
         $user_id = Auth::id();
         $conversion = new Conversion();
@@ -39,6 +39,8 @@ class XlsConversionService
             'user_id' => $user_id,
             'type' => $type,
             'columns' => $columns,
+            'f_header_row' => $f_header_row,
+            'f_header_row_wr' => $f_header_row_wr,
         ]);
 
         $conversion->save();
@@ -82,6 +84,8 @@ class XlsConversionService
     {
         $spreadsheet = IOFactory::load($this->file->getPathname());
         $columns = $this->conversion->columns;
+        $f_header_row = $this->conversion->f_header_row;
+        $f_header_row_wr = $this->conversion->f_header_row_wr;
 
         $sheet = $spreadsheet->getActiveSheet();
         $data = $sheet->toArray(null, true, true, true);
@@ -89,6 +93,20 @@ class XlsConversionService
         if ($columns) {
             $data = array_map(function ($row) use ($columns) {
                 return array_intersect_key($row, array_flip($columns));
+            }, $data);
+        }
+
+        if ($f_header_row) {
+            $headers = array_values(array_shift($data));
+
+            if ($f_header_row_wr)
+                $headers = array_map(function ($header) {
+                    return preg_replace("/ /", '_', $header);
+                }, $headers);
+
+            $data = array_map(function ($row) use ($headers) {
+                $row = array_values($row);
+                return array_combine($headers, $row);
             }, $data);
         }
 
