@@ -35,7 +35,7 @@ dropArea.addEventListener('drop', (event) => {
 
     const files = event.dataTransfer.files;
 
-    handleFile(files);
+    handleFile(files[0]);
 });
 
 dropArea.addEventListener('dragover', (event) => {
@@ -95,6 +95,9 @@ $convertBtn.click(() => {
         $result_content.text(content)
         $result.slideDown()
         convert_is_loading = false;
+        $('html, body').animate({
+            scrollTop: $result.offset().top - 50
+        }, 700);
     })
 
     convert_is_loading = true;

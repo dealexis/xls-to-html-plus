@@ -1,8 +1,7 @@
 /* General Footer Styling */
 .footer {
     background-color: #00986D;
-    height: 380px;
-    margin-top: 150px;
+    margin-top: 50px;
     color: white;
     position: relative;
     display: flex;
@@ -67,5 +66,5 @@
     text-align: center;
     color: white;
     font-size: 14px;
-    margin-top: auto;
+    margin-top: 50px;
 }

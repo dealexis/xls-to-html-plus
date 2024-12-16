@@ -30,6 +30,9 @@
                         <input type="file" id="fileInput" accept=".xls,.xlsx">
                     </div>
                 </div>
+                <div id="file-list" style="display: none;">
+                    <h3>File: <span id="uploaded-file-name"></span></h3>
+                </div>
                 <div class="toggle-header" id="optionsContent">
                     Options
                 </div>
@@ -53,18 +56,18 @@
                             <li><label><input type="checkbox" name="columns[]" value="L"> L</label></li>
                             <li><label><input type="checkbox" name="columns[]" value="M"> M</label></li>
                             <li><label><input type="checkbox" name="columns[]" value="N"> N</label></li>
-                            {{--                                <li><label><input type="checkbox" name="columns[]" value="O"> O</label></li>--}}
-                            {{--                                <li><label><input type="checkbox" name="columns[]" value="P"> P</label></li>--}}
-                            {{--                                <li><label><input type="checkbox" name="columns[]" value="Q"> Q</label></li>--}}
-                            {{--                                <li><label><input type="checkbox" name="columns[]" value="R"> R</label></li>--}}
-                            {{--                                <li><label><input type="checkbox" name="columns[]" value="S"> S</label></li>--}}
-                            {{--                                <li><label><input type="checkbox" name="columns[]" value="T"> T</label></li>--}}
-                            {{--                                <li><label><input type="checkbox" name="columns[]" value="U"> U</label></li>--}}
-                            {{--                                <li><label><input type="checkbox" name="columns[]" value="V"> V</label></li>--}}
-                            {{--                                <li><label><input type="checkbox" name="columns[]" value="W"> W</label></li>--}}
-                            {{--                                <li><label><input type="checkbox" name="columns[]" value="X"> X</label></li>--}}
-                            {{--                                <li><label><input type="checkbox" name="columns[]" value="Y"> Y</label></li>--}}
-                            {{--                                <li><label><input type="checkbox" name="columns[]" value="Z"> Z</label></li>--}}
+                            <li><label><input type="checkbox" name="columns[]" value="O"> O</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="P"> P</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="Q"> Q</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="R"> R</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="S"> S</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="T"> T</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="U"> U</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="V"> V</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="W"> W</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="X"> X</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="Y"> Y</label></li>
+                            <li><label><input type="checkbox" name="columns[]" value="Z"> Z</label></li>
                         </ul>
                     </div>
                     <div class="input-group">
@@ -79,10 +82,6 @@
                             - Replace whitespace with _ symbol (json)
                         </label>
                     </div>
-                </div>
-
-                <div id="file-list" style="display: none;">
-                    <h3>Uploaded File: <span id="uploaded-file-name"></span></h3>
                 </div>
 
                 <div id="convert-button" class="convert-button" style="display: none;">
