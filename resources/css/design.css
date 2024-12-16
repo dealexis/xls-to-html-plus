@@ -250,7 +250,7 @@ input[type="file"] {
 }
 
 .input-group {
-    margin-top: 15px;
+    margin-top: 7px;
     display: flex;
     flex-direction: column;
 }

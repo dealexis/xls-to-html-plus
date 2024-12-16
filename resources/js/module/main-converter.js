@@ -73,6 +73,12 @@ $convertBtn.click(() => {
         fm.append('columns[]', el.value)
     })
 
+    let f_header_row = $options_content.find('input[name="f_header_row"]:checked').val() ?? 0
+    let f_header_row_wr = $options_content.find('input[name="f_header_row_wr"]:checked').val() ?? 0
+
+    fm.append('f_header_row', f_header_row)
+    fm.append('f_header_row_wr', f_header_row_wr)
+
     axios.post(routes.upload, fm, {
         headers: {
             'Content-Type': 'multipart/form-data'

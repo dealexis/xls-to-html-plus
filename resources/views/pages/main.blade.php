@@ -69,8 +69,14 @@
                     </div>
                     <div class="input-group">
                         <label>
-                            <input type="checkbox" value="yes">
-                            Make key:value pairs using first row as a header (json only) (NOT WORKING YET)
+                            <input type="checkbox" value="1" name="f_header_row">
+                            Make key:value pairs using first row as a header (json)
+                        </label>
+                    </div>
+                    <div class="input-group input-group--children">
+                        <label>
+                            <input type="checkbox" value="1" name="f_header_row_wr">
+                            - Replace whitespace with _ symbol (json)
                         </label>
                     </div>
                 </div>
