@@ -1,3 +1,18 @@
+@import 'prismjs/themes/prism.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+h1 {
+    font-size: 2rem;
+}
+
+.content.container {
+    padding-top: 35px;
+}
+
+.content-wrapper {
+    min-height: 35vh;
+}

@@ -1,5 +1,7 @@
 @extends('default-page')
 @section('title', 'Convertiverse - Sign Up')
 @section('content')
-    Sign up
+    <div class="container content">
+        <h1>Sign Up</h1>
+    </div>
 @endsection

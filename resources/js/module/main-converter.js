@@ -1,3 +1,11 @@
+import ClipboardJS from "clipboard";
+import 'prismjs'; // Core Prism.js
+import 'prismjs/themes/prism.css'; // Default theme
+import 'prismjs/components/prism-javascript'; // Add language support
+import 'prismjs/components/prism-markup.js'; // Add other languages as needed
+import 'prismjs/components/prism-json.js'; // Add other languages as needed
+
+
 var convert_form_data = {
     'output': 'html',
 }
@@ -88,11 +96,16 @@ $convertBtn.click(() => {
         let content = data.data
 
         if (convert_form_data.output === 'json') {
-            content = JSON.stringify(content)
+            content = JSON.stringify(content, null, 2)
         }
 
-        $result_content.text('')
-        $result_content.text(content)
+        $result_content.val('')
+        $result_content.val(content)
+        console.log($result.find('code'))
+
+        $result.find('code').text('')
+        $result.find('code').text(content)
+
         $result.slideDown()
         convert_is_loading = false;
         $('html, body').animate({
@@ -106,3 +119,15 @@ $convertBtn.click(() => {
 $options.click(() => {
     $options_content.slideToggle()
 })
+
+const clipboard = new ClipboardJS('#copyBtn');
+const $copyBtn = $('#copyBtn')
+
+clipboard.on('success', function(e) {
+    e.clearSelection();
+    $copyBtn.text('Copied!')
+
+    setTimeout(()=> {
+        $copyBtn.text('Copy')
+    }, 3000)
+});

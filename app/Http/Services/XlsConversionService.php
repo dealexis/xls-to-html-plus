@@ -24,17 +24,27 @@ class XlsConversionService
             }, $sheet_data);
         }
 
-        $html = '<table>';
+        $html = '<table class="printed-table">';
         foreach ($sheet_data as $row) {
-            $html .= '<tr>';
+            $html .= "\n\t<tr>";  // Add tabulation for <tr>
             foreach ($row as $cell) {
-                $html .= '<td>' . htmlspecialchars($cell) . '</td>';
+                $html .= "\n\t\t<td>" . htmlspecialchars($cell ?? '') . "</td>";  // Add tabulation for <td>
             }
-            $html .= '</tr>';
+            $html .= "\n\t</tr>";  // Close <tr> with tabulation
         }
-        $html .= '</table>';
+        $html .= "\n</table>";  // Close table with tabulation
 
-        return $html;
+        // Use DOMDocument to format the HTML
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+
+        // Load the raw HTML into DOMDocument
+        $dom->loadHTML($html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+        // Return the formatted HTML
+        return $dom->saveHTML();
+        #return $html;
     }
 
     public function convertToJson(array $data = []): array
@@ -56,7 +66,7 @@ class XlsConversionService
 
         if ($f_header_row) {
             $headers = array_values(array_shift($sheet_data));
-            
+
             if ($f_header_row_wr)
                 $headers = array_map(function ($header) {
                     return preg_replace("/ /", '_', $header);

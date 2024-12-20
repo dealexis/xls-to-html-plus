@@ -1,7 +1,7 @@
 @extends('default-page')
 @section('title', 'Convertiverse - Privacy Policy')
 @section('content')
-    <div class="container">
+    <div class="content container">
         <h1>Privacy Policy for Convertiverse</h1>
         <p><strong>Effective Date:</strong> 16/12/2024</p>
         <p>

@@ -193,7 +193,6 @@ input[type="file"] {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 20px;
 }
 
 .convert-button button {
@@ -207,7 +206,6 @@ input[type="file"] {
     color: #ffffff;
 }
 
-/* Toggle header and content styling */
 .toggle-header {
     display: flex;
     align-items: center;
@@ -217,26 +215,14 @@ input[type="file"] {
     color: #555;
 }
 
-.toggle-header::before {
-    content: '▸';
-    display: inline-block;
-    margin-right: 8px;
-    transition: transform 0.3s ease;
-}
-
-.toggle-header.active::before {
-    transform: rotate(90deg);
-}
-
 #uploaded-file-name {
     font-weight: 600;
 }
 
-#file-list h3{
+#file-list h3 {
     font-size: 1.25rem;
 }
 
-/* Toggle content */
 #optionsContent {
     padding: 5px 15px 5px 0;
     font-size: 14px;
@@ -338,6 +324,7 @@ input[type="file"] {
 }
 
 #result {
+    max-width: 850px;
     border-radius: 10px;
     background-color: #ffffff;
     display: flex;
@@ -347,13 +334,25 @@ input[type="file"] {
     color: #48947e;
     font-size: 16px;
     transition: height 0.3s ease;
-    margin: 0 auto 100px;
+    margin: 0 auto 30px;
+}
+
+#result-content {
+    background: #0a371e;
+    color: #fff;
+    border-radius: 6px;
+    width: 100%;
+    padding: 15px;
 }
 
 .columns-list {
 
 }
 
-.columns-list li{
+.columns-list li {
     display: inline;
+}
+
+.full-width {
+    width: 100%;
 }

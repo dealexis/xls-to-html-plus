@@ -10,7 +10,9 @@
 </head>
 <body>
 @yield('header')
-@yield('content')
+<div class="content-wrapper">
+    @yield('content')
+</div>
 @yield('footer')
 @yield('scripts')
 <script>
