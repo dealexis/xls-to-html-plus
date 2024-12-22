@@ -69,15 +69,20 @@ class XlsConversionService
 
         $html = '<table>';
         foreach ($data as $row) {
-            $html .= '<tr>';
+            $html .= "\n\t<tr>";
             foreach ($row as $cell) {
-                $html .= '<td>' . htmlspecialchars($cell) . '</td>';
+                $html .= "\n\t\t<td>" . htmlspecialchars($cell ?? '') . "</td>";
             }
-            $html .= '</tr>';
+            $html .= "\n\t</tr>";
         }
-        $html .= '</table>';
+        $html .= "\n</table>";
 
-        return $html;
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+        $dom->loadHTML($html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+        return $dom->saveHTML();
     }
 
     public function convertToJson(): array

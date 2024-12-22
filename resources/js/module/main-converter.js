@@ -123,11 +123,11 @@ $options.click(() => {
 const clipboard = new ClipboardJS('#copyBtn');
 const $copyBtn = $('#copyBtn')
 
-clipboard.on('success', function(e) {
+clipboard.on('success', function (e) {
     e.clearSelection();
     $copyBtn.text('Copied!')
 
-    setTimeout(()=> {
+    setTimeout(() => {
         $copyBtn.text('Copy')
     }, 3000)
 });

@@ -24,7 +24,7 @@ class XlsConversionService
             }, $sheet_data);
         }
 
-        $html = '<table class="printed-table">';
+        $html = '<table>';
         foreach ($sheet_data as $row) {
             $html .= "\n\t<tr>";  // Add tabulation for <tr>
             foreach ($row as $cell) {
