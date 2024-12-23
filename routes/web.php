@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\AccountController;
 use App\Http\Controllers\Web\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,9 +28,7 @@ Route::get('/login', function () {
     return view('pages.login');
 })->name('page.login');
 
-Route::get('/account', function () {
-    return view('pages.account');
-})->name('page.account')->middleware('auth:sanctum');
+Route::get('/account', [AccountController::class, 'page'])->name('page.account');
 
 Route::get('/logout', [AuthController::class, 'logout'])
     ->name('page.logout')

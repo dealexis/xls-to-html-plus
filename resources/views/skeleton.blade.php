@@ -20,8 +20,10 @@
     var routes = @php
         echo json_encode( [
         'upload' => route('api.convert-xls'),
-    ])
-    @endphp
+        'upload_auth' => route('api.user.convert-xls'),
+    ]);
+    @endphp;
+    var AUTH = {{\Illuminate\Support\Facades\Auth::check() ? 'true' : 'false'}};
 </script>
 </body>
 </html>

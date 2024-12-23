@@ -28,4 +28,10 @@ class Conversion extends Model implements HasMedia
     {
         return $this->getFirstMedia();
     }
+
+    public function file()
+    {
+        return $this->morphOne(\Spatie\MediaLibrary\MediaCollections\Models\Media::class, 'model')
+            ->where('collection_name', 'default'); // Adjust 'default' to your collection name.
+    }
 }

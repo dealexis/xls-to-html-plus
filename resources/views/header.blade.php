@@ -22,7 +22,8 @@
                     <path class="cls-1"
                           d="M1.5,23.48l.37-2.05A10.3,10.3,0,0,1,12,13h0a10.3,10.3,0,0,1,10.13,8.45l.37,2.05"/>
                 </svg>
-                Account</a>
+                {{ \Illuminate\Support\Facades\Auth::user()->name }}
+            </a>
             <a href="{{route('page.logout')}}">
                 <svg fill="#000000" height="16" width="16" id="Capa_1" style="display: inline"
                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

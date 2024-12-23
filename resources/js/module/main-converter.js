@@ -87,11 +87,22 @@ $convertBtn.click(() => {
     fm.append('f_header_row', f_header_row)
     fm.append('f_header_row_wr', f_header_row_wr)
 
-    axios.post(routes.upload, fm, {
+    let route = routes.upload
+    let config = {
         headers: {
             'Content-Type': 'multipart/form-data'
         }
-    }).then(r => {
+    }
+
+    if (AUTH) {
+        route = routes.upload_auth
+        config.headers['Authorization'] = 'Bearer ' + localStorage.getItem('auth_token')
+    }
+
+    console.log(route)
+    console.log(config)
+
+    axios.post(route, fm, config).then(r => {
         let data = r.data;
         let content = data.data
 
@@ -101,7 +112,6 @@ $convertBtn.click(() => {
 
         $result_content.val('')
         $result_content.val(content)
-        console.log($result.find('code'))
 
         $result.find('code').text('')
         $result.find('code').text(content)

@@ -11,7 +11,7 @@ class ConversionResource extends JsonResource
         return [
             'type' => $this->type,
             'created_at' => $this->created_at,
-            'file' => FileResource::make($this->getFile()),
+            'file' => FileResource::make($this->file),
         ];
     }
 }

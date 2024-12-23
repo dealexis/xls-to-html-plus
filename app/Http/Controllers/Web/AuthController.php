@@ -20,7 +20,10 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended(route('page.account'));
+            ///return redirect()->intended(route('page.account'));
+            $token = Auth::user()->createToken(\App\Http\Controllers\Api\AuthController::$app_code)->plainTextToken;
+
+            return redirect(route('page.account'))->withErrors(compact('token'));
         }
 
         return back()->withErrors([
@@ -50,13 +53,16 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('page.account'));
+        $token = $user->createToken(\App\Http\Controllers\Api\AuthController::$app_code)->plainTextToken;
+
+        return redirect(route('page.account'))->withErrors(compact('token'));
     }
 
     public function logout(Request $request): RedirectResponse
     {
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        Auth::user()?->tokens()?->delete();
         return redirect(route('page.login'))->with('message', 'Logged out successfully');
     }
 }
