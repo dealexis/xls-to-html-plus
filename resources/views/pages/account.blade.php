@@ -4,9 +4,9 @@
     <div class="container middle-content">
         @if($conversions->isNotEmpty())
             <h1>Conversions list</h1>
-            <div class="conversions">
+            <div class="conversions flex flex-wrap">
                 @foreach($conversions as $conversion)
-                    <div class="conversion">
+                    <div class="conversion p-5">
                         {{$conversion->type}} {{$conversion->created_at}}
                         @if($conversion['file'])
                             @php($file = \App\Resources\FileResource::make($conversion['file'])->toArray(request()))
@@ -26,3 +26,11 @@
         </script>
     @endif
 @endsection
+
+<style>
+    .conversion {
+        background: #eefff5;
+        margin: 5px;
+        border-radius: 4px;
+    }
+</style>
