@@ -99,9 +99,6 @@ $convertBtn.click(() => {
         config.headers['Authorization'] = 'Bearer ' + localStorage.getItem('auth_token')
     }
 
-    console.log(route)
-    console.log(config)
-
     axios.post(route, fm, config).then(r => {
         let data = r.data;
         let content = data.data

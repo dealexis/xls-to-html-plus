@@ -1,0 +1,347 @@
+{
+	"info": {
+		"_postman_id": "4054f7fb-8080-4476-902c-734df311e531",
+		"name": "Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15369687",
+		"_collection_link": "https://dark-meadow-597428.postman.co/workspace/xml-to-html~0d4d4158-5bda-4763-b08f-f9db277205c4/collection/15369687-4054f7fb-8080-4476-902c-734df311e531?action=share&source=collection_link&creator=15369687"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "uwai",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "kek1@kek.kek2",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "c_password",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseApi}}/auth/register",
+							"host": [
+								"{{baseApi}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "kek@kek.kek",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseApi}}/auth/login",
+							"host": [
+								"{{baseApi}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseApi}}/auth/logout",
+							"host": [
+								"{{baseApi}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						},
+						"description": "{ \"message\": \"Unauthenticated.\"}  \n  \nor\n\n{ \"success\": true, \"message\": \"Logged out\"}"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseApi}}/user",
+							"host": [
+								"{{baseApi}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Conversions List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{baseApi}}/user/conversions",
+							"host": [
+								"{{baseApi}}"
+							],
+							"path": [
+								"user",
+								"conversions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Convert Users Xls",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "xls_file",
+									"type": "file",
+									"src": "postman-cloud:///1efafdfc-cece-4620-810c-bc3e4a4dde83"
+								},
+								{
+									"key": "output",
+									"value": "html",
+									"description": "html or json",
+									"type": "text"
+								},
+								{
+									"key": "columns[0]",
+									"value": "C",
+									"type": "text"
+								},
+								{
+									"key": "columns[B]",
+									"value": "B",
+									"type": "text"
+								},
+								{
+									"key": "f_header_row",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseApi}}/user/convert-xls",
+							"host": [
+								"{{baseApi}}"
+							],
+							"path": [
+								"user",
+								"convert-xls"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Convert Xls",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "output",
+							"value": "json",
+							"type": "text"
+						},
+						{
+							"key": "columns[0]",
+							"value": "C",
+							"description": "html or json",
+							"type": "text"
+						},
+						{
+							"key": "columns[B]",
+							"value": "B",
+							"type": "text"
+						},
+						{
+							"key": "xls_file",
+							"type": "file",
+							"src": "postman-cloud:///1efafdfc-cece-4620-810c-bc3e4a4dde83"
+						},
+						{
+							"key": "f_header_row",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "f_header_row_wr",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseApi}}/convert-xls",
+					"host": [
+						"{{baseApi}}"
+					],
+					"path": [
+						"convert-xls"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -20,11 +20,9 @@
             <h3>Please make your first conversion</h3>
         @endif
     </div>
-    @dump($errors)
-    @if ($errors->has('token'))
-        token
+    @if (session('token'))
         <script>
-            localStorage.setItem('auth_token', '{{$errors->first('token')}}');
+            localStorage.setItem('auth_token', '{{session('token')}}');
         </script>
     @endif
 @endsection

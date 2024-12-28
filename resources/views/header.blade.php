@@ -1,6 +1,7 @@
 <header class="nav">
-    <a href="{{route('page.main')}}" class="logo" aria-label="Convertiverse Home">
-        <img src="{{Vite::asset('resources/images/logo.png')}}" alt="logo.png" width="50">
+    <a href="{{route('page.main')}}" class="logo flex" aria-label="Convertiverse Home">
+        <img src="{{Vite::asset('resources/images/logo.png')}}" alt="logo.png" width="50" class="inline-flex">
+        <span class="ml-2 inline-flex content-center items-center font-light sm:text-lg">Convertiverse</span>
     </a>
     <nav class="nav-buttons">
         <a href="{{route('page.main')}}">Converter</a>
